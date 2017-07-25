@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    tools:context="com.project.uwm.mydiabetestracker.LoginActivity">>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="Add New User"
+        android:textSize = "17pt"
+        android:textColor = "@color/colorMotto"/>
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:paddingLeft="10dp"
+        android:layout_below="@+id/title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/border"
+        android:hint="@string/hint_user_name"
+
+         />
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:paddingLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/border"
+        android:layout_below="@+id/username"
+        android:layout_alignLeft="@+id/username"
+        android:layout_alignStart="@+id/username"
+        android:hint="@string/hint_password"
+        android:inputType="textPassword"/>
+
+    <EditText
+        android:id="@+id/firstname"
+        android:paddingLeft="10dp"
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:background="@drawable/border"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/password"
+        android:layout_alignLeft="@+id/password"
+        android:layout_alignStart="@+id/password"
+        android:hint="@string/hint_first_name"/>
+    <EditText
+        android:id="@+id/lastname"
+        android:paddingLeft="10dp"
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/border"
+        android:layout_below="@+id/firstname"
+        android:layout_alignLeft="@+id/firstname"
+        android:layout_alignStart="@+id/firstname"
+        android:hint="@string/hint_last_name"/>
+
+    <EditText
+        android:id="@+id/email"
+        android:paddingLeft="5dp"
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/lastname"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/border"
+        android:inputType="textEmailAddress"
+        android:layout_alignLeft="@+id/lastname"
+        android:layout_alignStart="@+id/lastname"
+        android:hint="@string/hint_email_address"/>
+    <Button
+        android:id="@+id/btnCreate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_new_account"
+        android:textSize="22sp"
+        android:layout_below="@+id/email"
+        android:layout_marginTop="30dp"
+        android:onClick="newUserCreate"
+        android:textColor="@color/colorMotto"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>

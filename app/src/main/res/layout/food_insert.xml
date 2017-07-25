@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="8dp"
+    android:paddingBottom="@dimen/activity_vertical_margin">
+    <TextView
+        android:paddingTop="25dp"
+        android:paddingBottom="0dp"
+        android:id="@+id/foodtype"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/meroon"
+        android:textSize="@dimen/hidestringsize"
+        android:text="@string/foodtype"
+        />
+
+
+    <TextView
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:id="@+id/amountfood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/ahm"
+        android:layout_below="@+id/foodtype"
+        android:layout_alignLeft="@+id/foodtype"
+        android:text="@string/amountfood"
+        android:textColor="@color/meroon"
+        android:textSize="@dimen/hidestringsize"/>
+    <EditText
+        android:id="@+id/amount_food_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:layout_below="@+id/foodtypevalue"
+        android:layout_toRightOf="@+id/amountfood"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@id/amountfood"/>
+    <EditText
+        android:id="@+id/foodtypevalue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/foodtype"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@id/foodtype"
+        android:layout_alignLeft="@id/amount_food_value"/>
+
+
+    <TextView
+        android:id="@+id/protien"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:layout_marginTop="@dimen/ahm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/amountfood"
+        android:layout_below="@+id/amountfood"
+        android:textColor="@color/meroon"
+        android:textSize="@dimen/hidestringsize"
+        android:text="@string/protien"
+        />
+    <EditText
+        android:id="@+id/protienvalue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:layout_toRightOf="@+id/protien"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@id/protien"
+        android:layout_alignLeft="@id/amount_food_value"
+        android:layout_below="@+id/amount_food_value" />
+
+    <TextView
+        android:id="@+id/calories"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:layout_marginTop="@dimen/ahm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/protien"
+        android:layout_below="@+id/protien"
+        android:textColor="@color/meroon"
+        android:textSize="@dimen/hidestringsize"
+        android:text="@string/calories"
+        />
+
+
+    <EditText
+        android:id="@+id/caloriesvalue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:layout_toRightOf="@+id/calories"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@id/calories"
+        android:layout_alignLeft="@id/amount_food_value"
+        android:layout_below="@+id/protienvalue" />
+    <TextView
+        android:id="@+id/date_food"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:layout_marginTop="@dimen/ahm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/calories"
+        android:layout_below="@+id/calories"
+        android:textColor="@color/meroon"
+        android:textSize="@dimen/hidestringsize"
+        android:text="@string/date"
+        />
+    <TextView
+        android:id="@+id/time_food"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:layout_marginTop="@dimen/ahm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/date_food"
+        android:textColor="@color/meroon"
+        android:textSize="@dimen/hidestringsize"
+        android:text="@string/time"
+        />
+
+    <EditText
+        android:id="@+id/date_value_f"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:layout_toRightOf="@+id/date_food"
+        android:layout_alignLeft="@id/amount_food_value"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@id/date_food"
+        android:layout_below="@+id/caloriesvalue" />
+
+    <EditText
+        android:id="@+id/time_value_f"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/time_food"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:inputType="time"
+        android:layout_toRightOf="@+id/time_food"
+        android:layout_alignLeft="@id/amount_food_value"
+        android:layout_below="@+id/date_value_f" />
+    <Button
+        android:id="@+id/foodaddbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ADD"
+        android:onClick="foodInsertDataBase"
+        android:layout_alignBaseline="@+id/button"
+        android:layout_alignBottom="@+id/button"
+        android:layout_toRightOf="@+id/calories"
+        android:layout_toEndOf="@+id/calories" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:text="Back"
+        android:onClick="goBack"
+        android:id="@+id/button"
+        android:layout_below="@+id/time_value_f"
+        android:layout_toRightOf="@+id/foodaddbutton"
+        android:layout_toEndOf="@+id/foodaddbutton"
+        android:layout_marginLeft="34dp"
+        android:layout_marginStart="34dp" />
+
+</RelativeLayout>
