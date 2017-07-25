@@ -17,7 +17,6 @@ public class UserObject {
     private static String email;
 
 
-
     public UserObject(int uid, String t_userName, String t_password, String t_firstName, String t_lastName, String t_email){
         setUserName(t_userName);
         setPassword(t_password);
@@ -27,6 +26,7 @@ public class UserObject {
 
 
     }
+
 
     public static void setEmail(String email) {
         UserObject.email = email;
