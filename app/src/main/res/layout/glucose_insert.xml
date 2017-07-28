@@ -4,30 +4,40 @@
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingTop="8dp"
     android:paddingBottom="@dimen/activity_vertical_margin">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:gravity="center"
+        android:textSize="@dimen/prescription_title_size"
+        android:textStyle="bold"
+        android:textColor="@color/maroon"
+        android:text="@string/glucose_log_title"/>
     <TextView
         android:paddingTop="25dp"
         android:paddingBottom="5dp"
         android:id="@+id/glucose_level"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/meroon"
+        android:textColor="@color/maroon"
+        android:layout_marginTop="80dp"
         android:textSize="@dimen/hidestringsize"
         android:text="@string/glucose_level"
         />
 
     <TextView
+        android:id="@+id/reading_taken"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:id="@+id/reading_taken"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/ahm"
         android:layout_below="@+id/glucose_level"
         android:layout_alignLeft="@+id/glucose_level"
         android:text="@string/reading_taken"
-        android:textColor="@color/meroon"
+        android:textColor="@color/maroon"
         android:textSize="@dimen/hidestringsize"
         />
     <TextView
@@ -39,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/reading_taken"
         android:layout_below="@+id/reading_taken"
-        android:textColor="@color/meroon"
+        android:textColor="@color/maroon"
         android:textSize="@dimen/hidestringsize"
         android:text="@string/date"
 
@@ -53,7 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/reading_taken"
         android:layout_below="@+id/date"
-        android:textColor="@color/meroon"
+        android:textColor="@color/maroon"
         android:textSize="@dimen/hidestringsize"
         android:text="@string/time"
         />
@@ -63,11 +73,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/glucose_level"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignBottom="@id/glucose_level"/>
+        android:layout_alignBottom="@id/glucose_level"
+        android:focusable="true"
+        android:layout_alignTop="@+id/glucose_level" />
     <EditText
         android:id="@+id/reading_taken_value"
         android:layout_width="wrap_content"
@@ -102,14 +113,28 @@
         android:layout_alignLeft="@+id/date_value"
         android:layout_below="@+id/date_value" />
     <Button
-        android:id="@+id/glucoseaddbutton"
+        android:id="@+id/exercise_add_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/time_value"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="11dp"
+        android:layout_marginTop="35dp"
+        android:text="ADD"
         android:onClick="glucoseInsert"
-        android:text="ADD"/>
+        android:layout_alignBaseline="@+id/exercise_back_button"
+        android:layout_alignBottom="@+id/exercise_back_button"
+        android:layout_marginLeft="80dp"
+        />
+    <Button
+        android:id="@+id/exercise_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:text="Back"
+        android:onClick="goBack"
+        android:layout_below="@+id/time_value"
+        android:layout_toRightOf="@+id/exercise_add_button"
+        android:layout_toEndOf="@+id/exercise_add_button"
+        android:layout_marginLeft="34dp"
+        android:layout_marginStart="34dp" />
 
 
 </RelativeLayout>

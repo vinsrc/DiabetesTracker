@@ -28,7 +28,10 @@
         <activity android:name=".AddActivity"></activity>
         <activity android:name=".FoodInsertActivity"></activity>
         <activity android:name=".GlucoseInsertActivity"></activity>
+        <activity android:name=".ExerciseActivity"></activity>
+        <activity android:name=".PrescriptionActivity"></activity>
         <activity android:name=".UserActivity"></activity>
+        <activity android:name=".FoodListActivity"></activity>
     </application>
 
 </manifest>

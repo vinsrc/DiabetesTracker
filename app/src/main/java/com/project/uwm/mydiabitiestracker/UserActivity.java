@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,7 +16,7 @@ import android.widget.Toast;
  */
 
 public class UserActivity extends AppCompatActivity {
-
+    public static final String UA = "UserActivity";
     private DatabaseManager dbManager;
     EditText userName, passWord, firstName, lastName, email;
     Button btnCreate;
@@ -25,15 +26,39 @@ public class UserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_user);
         dbManager = new DatabaseManager(this);
-        btnCreate = (Button)findViewById(R.id.btnCreate);
+        btnCreate = (Button)findViewById(R.id.user_add_button);
+    }
+    protected void onStart() {
+        super.onStart();
+        Log.w(UA, "inside UserActivity:onStart()\n");
+    }
+    protected void onRestart() {
+        super.onRestart();
+        Log.v(UA, "inside UserActivity:onRestart()\n");
+    }
+    protected void onResume() {
+        super.onResume();
+        Log.v(UA, "inside UserActivity:onResume()\n");
+    }
+    protected void onPause() {
+        super.onPause();
+        Log.v(UA, "inside UserActivity:onPause()\n");
+    }
+    protected void onStop() {
+        super.onStop();
+        Log.v(UA, "inside UserActivity:onStop()\n");
+    }
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.v(UA, "inside UserActivity:onDestroy()\n");
     }
     public void newUserCreate( View v ) {
         if (v == btnCreate) {
-            userName = (EditText) findViewById(R.id.username);
-            passWord = (EditText) findViewById(R.id.password);
-            firstName = (EditText) findViewById(R.id.firstname);
-            lastName = (EditText) findViewById(R.id.lastname);
-            email = (EditText) findViewById(R.id.email);
+            userName = (EditText) findViewById(R.id.user_name_value);
+            passWord = (EditText) findViewById(R.id.password_value);
+            firstName = (EditText) findViewById(R.id.first_name_value);
+            lastName = (EditText) findViewById(R.id.last_name_value);
+            email = (EditText) findViewById(R.id.email_value);
 
             String userNameString = userName.getText().toString();
             String passWordString = passWord.getText().toString();
@@ -74,7 +99,7 @@ public class UserActivity extends AppCompatActivity {
 
                 showMessage(userCreated, welcome);
                 clearText();
-                Toast.makeText(this, "Detils added", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Details added", Toast.LENGTH_SHORT).show();
             } catch (NumberFormatException nfe) {
                 Toast.makeText(this, "User Insert error", Toast.LENGTH_LONG).show();
             }
@@ -84,16 +109,14 @@ public class UserActivity extends AppCompatActivity {
             showMessage(userCreated, welcome);
             clearText();
             // Proceed to the Main Menu:
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, UserActivity.class);
             startActivity(intent);
+            dbManager.close();
         }
-       /* if(v == btnVerify) {
-            userName = (EditText) findViewById(R.id.username);
-            passWord = (EditText) findViewById(R.id.password);
-            String userNameString = userName.getText().toString();
-            String passWordString = passWord.getText().toString();
-        }*/
 
+    }
+    public void goBack(View view){
+        this.finish();
     }
 
     private void clearText() {
@@ -116,4 +139,5 @@ public class UserActivity extends AppCompatActivity {
         });
         builder.show();
     }
+
 }

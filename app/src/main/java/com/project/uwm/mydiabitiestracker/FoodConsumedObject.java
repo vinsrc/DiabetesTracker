@@ -5,7 +5,7 @@ package com.project.uwm.mydiabitiestracker;
  */
 
 public class FoodConsumedObject {
-    private long food_id;
+    private int food_id;
     private String typeOfFood;
     private int amountOfFood;
     private int protien;
@@ -22,6 +22,10 @@ public class FoodConsumedObject {
         setFood_id(t_foo_id);
     }
 
+
+    public int getFood_id() {
+        return food_id;
+    }
     public int getCalories() {
         return calories;
     }
@@ -46,7 +50,7 @@ public class FoodConsumedObject {
         this.calories = calories;
     }
 
-    public void setFood_id(long food_id) {
+    public void setFood_id(int food_id) {
         this.food_id = food_id;
     }
 

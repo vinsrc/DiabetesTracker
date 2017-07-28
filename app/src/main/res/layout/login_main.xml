@@ -16,12 +16,12 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="350dp"
-        app:srcCompat="@drawable/blooddrop" />
+        app:srcCompat="@drawable/app_logo_rev2" />
     <TextView
         android:id="@+id/label_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/meroon"
+        android:textColor="@color/maroon"
         android:textSize="@dimen/stringsize"
         android:text="@string/user"
         android:layout_below="@+id/imageView" />
@@ -44,7 +44,7 @@
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/meroon"
+        android:textColor="@color/maroon"
         android:textSize="@dimen/stringsize"
         android:text="@string/password"
 
@@ -64,6 +64,7 @@
         android:layout_alignStart="@+id/password_user"
         android:textSize="@dimen/hidestringsize"
         android:layout_alignParentRight="true"
+        android:inputType="textPassword"
         />
 
     <Button
@@ -72,7 +73,7 @@
         android:layout_height="wrap_content"
         android:text="@string/buttonlogin"
         android:textSize="@dimen/hidestringsize"
-        android:textColor="@color/meroon"
+        android:textColor="@color/maroon"
         android:layout_gravity="center"
         android:layout_below="@+id/hint_password"
         android:layout_centerHorizontal="true"

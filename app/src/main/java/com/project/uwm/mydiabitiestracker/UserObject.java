@@ -1,9 +1,5 @@
 package com.project.uwm.mydiabitiestracker;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-
 /**
  * Created by Anitha on 7/22/2017.
  */
@@ -16,18 +12,13 @@ public class UserObject {
     private static String lastName;
     private static String email;
 
-
     public UserObject(int uid, String t_userName, String t_password, String t_firstName, String t_lastName, String t_email){
         setUserName(t_userName);
         setPassword(t_password);
         setFirstName(t_firstName);
         setLastName(t_lastName);
         setEmail(t_email);
-
-
     }
-
-
     public static void setEmail(String email) {
         UserObject.email = email;
     }

@@ -2,6 +2,7 @@ package com.project.uwm.mydiabitiestracker;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -14,6 +15,7 @@ import java.util.Date;
 
 public class GlucoseInsertActivity extends AppCompatActivity {
     private DatabaseManager dbManager;
+    public static final String GI = "GlucoseInsertActivity";
 
         public void onCreate(Bundle savedInstanceState){
             super.onCreate(savedInstanceState);
@@ -25,6 +27,30 @@ public class GlucoseInsertActivity extends AppCompatActivity {
             EditText timeglu = (EditText) findViewById(R.id.time_value);
             timeglu.setText(df.format("hh:mm:ss a",date));
         }
+    protected void onStart() {
+        super.onStart();
+        Log.w(GI, "inside GlucoseInsertActivity:onStart()\n");
+    }
+    protected void onRestart() {
+        super.onRestart();
+        Log.v(GI, "inside GlucoseInsertActivity:onRestart()\n");
+    }
+    protected void onResume() {
+        super.onResume();
+        Log.v(GI, "inside GlucoseInsertActivity:onResume()\n");
+    }
+    protected void onPause() {
+        super.onPause();
+        Log.v(GI, "inside GlucoseInsertActivity:onPause()\n");
+    }
+    protected void onStop() {
+        super.onStop();
+        Log.v(GI, "inside GlucoseInsertActivity:onStop()\n");
+    }
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.v(GI, "inside GlucoseInsertActivity:onDestroy()\n");
+    }
         public void glucoseInsert(View v) {
             dbManager = new DatabaseManager(this);
             EditText glucoseValue = (EditText) findViewById(R.id.glucose_value);
@@ -39,17 +65,16 @@ public class GlucoseInsertActivity extends AppCompatActivity {
             try{
                 GlucoseReadingObject gco = new GlucoseReadingObject( 0,iGlucoseValue,sReadingTaken,dateString,timeString );
                 dbManager.insertGlucose(gco);
-                Toast.makeText( this, "Detils added", Toast.LENGTH_SHORT ).show( );
+                Toast.makeText( this, "Details added", Toast.LENGTH_SHORT ).show( );
             } catch ( NumberFormatException nfe ) {
                 Toast.makeText( this, "Food Insert error", Toast.LENGTH_LONG ).show( );
             }
             glucoseValue.setText("");
             readingTaken.setText("");
-
+            dbManager.close();
         }
-        public void goBack(){
-            this.finish();
-        }
-
+    public void goBack(View view){
+        this.finish();
+    }
     }
 

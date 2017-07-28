@@ -1,12 +1,9 @@
 package com.project.uwm.mydiabitiestracker;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.renderscript.Sampler;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,63 +16,61 @@ import android.widget.Toast;
 public class LoginActivity extends AppCompatActivity {
     Button login_button;
     EditText userName, passWord;
-    String user , password;
-    UserObject preference;
+
     private static final String USER_KEY = "userKey";
     private static final String PASSWORD_KEY ="passwordKey";
     private static final String USER_DETAILS ="userDetails";
     UserPreference pref;
-
+    public static final String LA = "LoginActivity";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       pref = new UserPreference(this);
+        pref = new UserPreference(this);
         setContentView(R.layout.login_main);
-     /*   userName.setText(pref.getUserName());
-        passWord.setText(pref.getPassword());*/
-   /*   *//*  SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
-        userName.setText(pref.getString(USER_KEY,"a"));
-        passWord.setText(pref.getString(PASSWORD_KEY,"a"));*//*
-        SharedPreferences pref =PreferenceManager.getDefaultSharedPreferences(this);
-        user = pref.getString(USER_KEY,"a");
-        password = pref.getString(PASSWORD_KEY,"a");*/
-
     }
-
-    public void onStart( ) {
-        super.onStart( );
-        updateView( );
+    protected void onStart() {
+        super.onStart();
+        updateView();
+        Log.w(LA, "inside LoginActivity:onStart()\n");
     }
     public void updateView(){
         passWord = (EditText) findViewById(R.id.hint_user);
         userName =(EditText) findViewById(R.id.hint_password);
         passWord.setText(pref.getPassword());
         userName.setText(pref.getUserName());
+        userName.requestFocus();
+    }
+    protected void onRestart() {
+        super.onRestart();
+        Log.v(LA, "inside LoginActivity:onRestart()\n");
+    }
+    protected void onResume() {
+        super.onResume();
+        Log.v(LA, "inside LoginActivity:onResume()\n");
+    }
+    protected void onPause() {
+        super.onPause();
+        Log.v(LA, "inside LoginActivity:onPause()\n");
+    }
+    protected void onStop() {
+        super.onStop();
+        Log.v(LA, "inside LoginActivity:onStop()\n");
+    }
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.v(LA, "inside LoginActivity:onDestroy()\n");
     }
 
-
     public void verifyLogin(View v){
-  /*      SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
-        userName.setText(pref.getString(USER_KEY,"name"));
-        passWord.setText(pref.getString(PASSWORD_KEY,"password"));*/
-
-
         passWord = (EditText) findViewById(R.id.hint_user);
         userName =(EditText) findViewById(R.id.hint_password);
-
         String userNameString = userName.getText().toString().trim();
         String passWordString = passWord.getText().toString().trim();
         pref.setUserName(userNameString);
         pref.setPassword(passWordString);
         pref.setPreference(this);
-        DatabaseManager dbManager = new DatabaseManager(this);
 
-       /* SharedPreferences preferences = getSharedPreferences(USER_DETAILS, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString(USER_KEY, userName.getText().toString());
-        editor.putString(PASSWORD_KEY, passWord.getText().toString());
-        editor.putString("logged", "logged");
-        editor.commit();*/
+        DatabaseManager dbManager = new DatabaseManager(this);
 
         int statusUser = dbManager.verifyLogin(userNameString,passWordString);
         if (statusUser <= 0) {
@@ -86,7 +81,6 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
-
     private void clearText() {
         userName.setText("");
         passWord.setText("");
