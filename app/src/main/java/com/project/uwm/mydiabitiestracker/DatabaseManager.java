@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 
 public class DatabaseManager extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "Diabetes2";
+    private static final String DATABASE_NAME = "DiabetesF";
     private static final int DATABASE_VERSION = 1;
 
     // Control Table
@@ -36,10 +36,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
     private static final String GLUCOSE_READING_TAKEN = "GlucoseReadingTaken";
     private static final String GDATE = "gDate";
     private static final String GTIME = "gTime";
-    private static final String gsqlCreate ="CREATE TABLE IF NOT EXISTS "
-            + GLUCOSE_TABLE + " (" + GID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-            + GLUCOSE_READING_TAKEN + " TEXT, " + GLUCOSE_LEVEL + " INTEGER,"
-            + GDATE + " REAL," + GTIME + " REAL)";
+    private static final String gsqlCreate ="CREATE TABLE IF NOT EXISTS " + GLUCOSE_TABLE + " (" + GID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + GLUCOSE_READING_TAKEN + " TEXT, " + GLUCOSE_LEVEL + " INTEGER," + GDATE + " REAL," + GTIME + " REAL)";
 
 
     //Prescription table creation
@@ -128,9 +125,9 @@ public class DatabaseManager extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         String sqlInsert = "insert into " + CONTROL_TABLE + "(" + CID + "," + CDATE + ") values( null, julianday('" + glucose.getGdate() + "'))";
         db.execSQL(sqlInsert);
-        String gSqlInsert = "insert into " + GLUCOSE_TABLE
-        + " (" + GID + ", " + GLUCOSE_LEVEL +", " + GLUCOSE_READING_TAKEN +   ", " + GDATE + ", " + GTIME + ")"
-         +" values(null,'" + glucose.getGlucose_level() + "'," + glucose.getReading_taken() + "," + ",julianday('" + glucose.getGdate() + "'),julianday('" + glucose.getGtime() + "'))";
+        String gSqlInsert = "insert into " + GLUCOSE_TABLE;
+        gSqlInsert+= " (" + GID + ", " + GLUCOSE_LEVEL +", " + GLUCOSE_READING_TAKEN +   ", " + GDATE + ", " + GTIME + ")";
+        gSqlInsert+=" values(null," + glucose.getGlucose_level() + ",'" + glucose.getReading_taken() + "'," + "julianday('" + glucose.getGdate() + "'),julianday('" + glucose.getGtime() + "'))";
         db.execSQL(gSqlInsert);
         db.close();
     }

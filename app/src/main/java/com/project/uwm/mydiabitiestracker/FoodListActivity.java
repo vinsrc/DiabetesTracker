@@ -39,7 +39,7 @@ public class FoodListActivity extends AppCompatActivity {
         rvFood.setLayoutManager(fLayoutManager);
 
 
-        foodList = dbManager.selectFood();
+        foodList = dbManager.selectAllFoodDetails();
         fAdaptor = new FoodAdapter(this, foodList);
         rvFood.setAdapter(fAdaptor);
     }
