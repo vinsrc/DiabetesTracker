@@ -1,4 +1,4 @@
-package com.project.uwm.mydiabitiestracker;
+package com.project.uwm.mydiabitiestracker.insertion;
 
 
 /**
@@ -11,6 +11,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.project.uwm.mydiabitiestracker.DatabaseManager;
+import com.project.uwm.mydiabitiestracker.R;
+import com.project.uwm.mydiabitiestracker.objects.FoodConsumedObject;
 
 import java.util.Date;
 

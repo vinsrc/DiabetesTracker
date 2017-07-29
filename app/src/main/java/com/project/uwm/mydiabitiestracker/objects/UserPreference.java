@@ -1,4 +1,4 @@
-package com.project.uwm.mydiabitiestracker;
+package com.project.uwm.mydiabitiestracker.objects;
 
 import android.content.Context;
 import android.content.SharedPreferences;

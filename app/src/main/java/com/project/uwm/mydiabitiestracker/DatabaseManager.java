@@ -5,6 +5,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.project.uwm.mydiabitiestracker.objects.ExerciseReadingObject;
+import com.project.uwm.mydiabitiestracker.objects.FoodConsumedObject;
+import com.project.uwm.mydiabitiestracker.objects.GlucoseReadingObject;
+import com.project.uwm.mydiabitiestracker.objects.PrescriptionReadingObject;
+import com.project.uwm.mydiabitiestracker.objects.UserObject;
+
 import java.util.ArrayList;
 
 

@@ -1,4 +1,4 @@
-package com.project.uwm.mydiabitiestracker;
+package com.project.uwm.mydiabitiestracker.insertion;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,6 +10,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.project.uwm.mydiabitiestracker.DatabaseManager;
+import com.project.uwm.mydiabitiestracker.R;
+import com.project.uwm.mydiabitiestracker.objects.UserObject;
 
 /**
  * Created by RON on 7/17/2017.

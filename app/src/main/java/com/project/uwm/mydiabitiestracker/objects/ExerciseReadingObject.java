@@ -1,4 +1,4 @@
-package com.project.uwm.mydiabitiestracker;
+package com.project.uwm.mydiabitiestracker.objects;
 
 /**
  * Created by RWZ on 7/24/2017.

@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if (id == R.id.view_reports) {
-            Intent intent = new Intent(this, FoodListActivity.class);
+            Intent intent = new Intent(this,ListMainRecords.class);
             startActivity(intent);
 
 
@@ -90,8 +90,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void selectAddDetails(View v) {
         Intent intent = new Intent(this, AddActivity.class);
         startActivity(intent);
-        /*Intent intent = new Intent(this, FoodListActivity.class);
-        startActivity(intent);*/
+
 
     }
 }

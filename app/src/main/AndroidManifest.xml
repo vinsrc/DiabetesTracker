@@ -26,12 +26,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".AddActivity"></activity>
-        <activity android:name=".FoodInsertActivity"></activity>
-        <activity android:name=".GlucoseInsertActivity"></activity>
-        <activity android:name=".ExerciseActivity"></activity>
-        <activity android:name=".PrescriptionActivity"></activity>
-        <activity android:name=".UserActivity"></activity>
-        <activity android:name=".FoodListActivity"></activity>
+        <activity android:name=".insertion.FoodInsertActivity"></activity>
+        <activity android:name=".insertion.GlucoseInsertActivity"></activity>
+        <activity android:name=".insertion.ExerciseActivity"></activity>
+        <activity android:name=".insertion.PrescriptionActivity"></activity>
+        <activity android:name=".insertion.UserActivity"></activity>
+        <activity android:name=".ListMainRecords"></activity>
     </application>
 
 </manifest>

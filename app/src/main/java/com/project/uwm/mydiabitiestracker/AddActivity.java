@@ -6,6 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
+import com.project.uwm.mydiabitiestracker.insertion.ExerciseActivity;
+import com.project.uwm.mydiabitiestracker.insertion.FoodInsertActivity;
+import com.project.uwm.mydiabitiestracker.insertion.GlucoseInsertActivity;
+import com.project.uwm.mydiabitiestracker.insertion.PrescriptionActivity;
+
 /**
  * Created by Anitha on 7/23/2017.
  */

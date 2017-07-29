@@ -20,7 +20,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Select All Records:" />
+                android:text="Select" />
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
@@ -44,6 +44,7 @@
                 android:text="Select All Records:" />
         </LinearLayout>
     </LinearLayout>
+
 
 
     <LinearLayout
@@ -93,26 +94,23 @@
             android:layout_weight="1"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:orientation="horizontal"
-            android:padding="4dp">
+            android:padding="4dp"
+            android:weightSum="1">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="27dp"
                 style="@style/TextStyle"
-                android:text="From Date:"/>
+                android:text="From Date:" />
 
             <EditText
                 android:id="@+id/editTextFromDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                style="@style/TextStyle"
                 android:ems="10"
+                android:gravity="center"
+                android:hint="2017-01-31"
                 android:inputType="date" />
-
-            <DatePicker
-                android:id="@+id/datePicker2"
-                android:layout_width="128dp"
-                android:layout_height="42dp"
-                android:layout_weight="1" />
         </LinearLayout>
 
         <LinearLayout
@@ -126,21 +124,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextStyle"
-                android:text="To Date:"/>
+                android:text="To Date:" />
 
             <EditText
                 android:id="@+id/editTextToDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:gravity="center"
+                style="@style/TextStyle"
                 android:ems="10"
+                android:hint="2017-01-31"
                 android:inputType="date" />
 
-            <DatePicker
-                android:id="@+id/datePicker3"
-                android:layout_width="128dp"
-                android:layout_height="42dp"
-                android:layout_weight="1" />
         </LinearLayout>
 
     </LinearLayout>
@@ -149,6 +145,17 @@
         android:layout_height="1dp"
         android:background="@color/border_color">
 
+        <DatePicker
+            android:id="@+id/datePicker7"
+            android:layout_width="wrap_content"
+            android:layout_height="5dp" />
     </LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/recordFragmentContainer"
+    android:orientation="vertical">
+
+</LinearLayout>
 
 </LinearLayout>

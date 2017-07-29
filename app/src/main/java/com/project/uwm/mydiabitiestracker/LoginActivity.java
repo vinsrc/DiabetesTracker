@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.project.uwm.mydiabitiestracker.insertion.UserActivity;
+import com.project.uwm.mydiabitiestracker.objects.UserPreference;
+
 /**
  * Created by Anitha on 7/9/2017.
  */

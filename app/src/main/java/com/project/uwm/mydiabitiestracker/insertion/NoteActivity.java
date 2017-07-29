@@ -1,8 +1,10 @@
-package com.project.uwm.mydiabitiestracker;
+package com.project.uwm.mydiabitiestracker.insertion;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+
+import com.project.uwm.mydiabitiestracker.R;
 
 /**
  * Created by Anitha on 7/23/2017.

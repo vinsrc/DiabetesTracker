@@ -1,10 +1,13 @@
-package com.project.uwm.mydiabitiestracker;
+package com.project.uwm.mydiabitiestracker.adaptors;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.project.uwm.mydiabitiestracker.R;
+import com.project.uwm.mydiabitiestracker.objects.FoodConsumedObject;
 
 import java.util.List;
 
@@ -15,8 +18,6 @@ import java.util.List;
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
     private List<FoodConsumedObject> mFoods;
     private Context mContext;
-
-
 
     public FoodAdapter(Context context, List<FoodConsumedObject> foods){
         mFoods = foods;
