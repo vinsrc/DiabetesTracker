@@ -4,10 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.TextView;
-import android.widget.Toast;
-import 	android.support.v7.widget.RecyclerView.ViewHolder;
 
 import java.util.List;
 
@@ -18,7 +15,8 @@ import java.util.List;
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
     private List<FoodConsumedObject> mFoods;
     private Context mContext;
-    private AdapterView.OnItemClickListener listener;
+
+
 
     public FoodAdapter(Context context, List<FoodConsumedObject> foods){
         mFoods = foods;
@@ -36,7 +34,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
         View foodView = inflater.inflate(R.layout.item_food, parent, false);
 
         // Return a new holder instance
-        ViewHolder viewHolder = new ViewHolder(context,foodView);
+        ViewHolder viewHolder = new ViewHolder(foodView);
         return viewHolder;
     }
 
@@ -65,57 +63,44 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
     public int getItemCount() {
         return mFoods.size();
     }
-    public interface OnItemClickListener {
-        void onItemClick(View itemView, int position);
-    }
-    public void setOnItemClickListener(OnItemClickListener listenerme) {
-        this.listener = listenerme;
-    }
+
     // Provide a direct reference to each of the views within a data item
     // Used to cache the views within the item layout for fast access
     public class ViewHolder extends RecyclerView.ViewHolder {
         // Your holder should contain a member variable
         // for any view that will be set as you render a row
         public TextView dateTextView;
-       public TextView timeTextView;
+        public TextView timeTextView;
         public TextView tofTextView;
         public TextView aofTextView;
         public TextView proteinTextView;
         public TextView caloriesTextView;
-        private Context context;
 
         // We also create a constructor that accepts the entire item row
         // and does the view lookups to find each subview
-        public ViewHolder(final View itemView) {
+        public ViewHolder(View itemView) {
             // Stores the itemView in a public final member variable that can be used
             // to access the context from any ViewHolder instance.
             super(itemView);
-            this.dateTextView = (TextView) itemView.findViewById(R.id.rvs_date_fvalue);
-            this.timeTextView = (TextView) itemView.findViewById(R.id.rvs_time_fvalue);
-            this.tofTextView = (TextView) itemView.findViewById(R.id.rvs_tof_fvalue);
-            this.aofTextView = (TextView) itemView.findViewById(R.id.rvs_aof_fvalue);
-            this.proteinTextView = (TextView) itemView.findViewById(R.id.rvs_protien_fvalue);
-            this.caloriesTextView =  (TextView) itemView.findViewById(R.id.rvs_calories_fvalue);
-            this.context = context;
-
-
-            itemView.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v){
-                    if(listener != null){
-                        int position = getAdapterPosition();
-                        if(position != RecyclerView.NO_POSITION){
-                            listener.onItemClick(itemView, position);
-                            Toast.makeText( getContext(),Integer.toString(position),Toast.LENGTH_LONG);
-
-                        }
-                    }
-                }
-            });
+            dateTextView = (TextView) itemView.findViewById(R.id.rvs_date_fvalue);
+            timeTextView = (TextView) itemView.findViewById(R.id.rvs_time_fvalue);
+            tofTextView = (TextView) itemView.findViewById(R.id.rvs_tof_fvalue);
+            aofTextView = (TextView) itemView.findViewById(R.id.rvs_aof_fvalue);
+            proteinTextView = (TextView) itemView.findViewById(R.id.rvs_protien_fvalue);
+            caloriesTextView =  (TextView) itemView.findViewById(R.id.rvs_calories_fvalue);
         }
 
 
+        //how to use this
+        //https://www.littlerobots.nl/blog/Handle-Android-RecyclerView-Clicks/
+      /*  ItemClickSupport RecyclerItemClickSupport = new ItemClickSupport(itemView);
+        RecyclerItemClickSupport.addTo(itemView).setOnItemClickListener(new RecyclerItemClickSupport.OnItemClickListener() {
+            @Override
+            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+                // do something
+            }
+        });*/
+
 
     }
-
 }

@@ -43,6 +43,13 @@ public class FoodListActivity extends AppCompatActivity {
         fAdaptor = new FoodAdapter(this, foodList);
         rvFood.setAdapter(fAdaptor);
     }
+      /*   ItemClickSupport.addTo(rvFood).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+            @Override
+            public void onItemClicked(RecyclerView rvFood, int position, View v) {
+                // do it
+            }
+        }
+    );*/
 
 
 }
