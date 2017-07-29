@@ -19,6 +19,7 @@ public class GlucoseReadingObject {
         setGtime(t_gtime);
     }
 
+
     public void setGlucose_id(int glucose_id) {
         this.glucose_id = glucose_id;
     }
@@ -26,15 +27,15 @@ public class GlucoseReadingObject {
     public String getReading_taken() {
         return reading_taken;
     }
-
     public int getGlucose_level() {
         return glucose_level;
     }
-
+    public int getGlucose_id() {
+        return glucose_id;
+    }
     public void setGlucose_level(int glucose_level) {
         this.glucose_level = glucose_level;
     }
-
     public void setReading_taken(String reading_taken) {
         this.reading_taken = reading_taken;
     }

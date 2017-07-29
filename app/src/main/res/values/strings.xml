@@ -23,7 +23,7 @@
         <string name="medication">Medication</string>
         <string name="food">Diet Tracker</string>
 
-        <string name="glucose_level">Glucose Level</string>
+        <string name="glucose_level">Glucose Level(mg/dL)</string>
         <string name="reading_taken">Reading Taken</string>
         <string name="date" >Date</string>
         <string name="time" >Time</string>

@@ -32,6 +32,15 @@ public class DatabaseManager extends SQLiteOpenHelper {
     //Glucose table creation
     private static final String GLUCOSE_TABLE = "GlucoseTable";
     private static final String GID = "gid";
+    private static final String GLUCOSE_LEVEL = "GlucoseLevel";
+    private static final String GLUCOSE_READING_TAKEN = "GlucoseReadingTaken";
+    private static final String GDATE = "gDate";
+    private static final String GTIME = "gTime";
+    private static final String gsqlCreate ="CREATE TABLE IF NOT EXISTS "
+            + GLUCOSE_TABLE + " (" + GID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + GLUCOSE_READING_TAKEN + " TEXT, " + GLUCOSE_LEVEL + " INTEGER,"
+            + GDATE + " REAL," + GTIME + " REAL)";
+
 
     //Prescription table creation
     private static final String PRESCRIPTON_TABLE = "PrescriptionTable";
@@ -77,10 +86,10 @@ public class DatabaseManager extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(sqlCreate);
         db.execSQL(dsqlCreate);
+        db.execSQL(gsqlCreate);
         db.execSQL(usqlCreate);
         db.execSQL(psqlCreate);
         db.execSQL(esqlCreate);
@@ -94,9 +103,11 @@ public class DatabaseManager extends SQLiteOpenHelper {
         // Drop old tables if they exist:
         db.execSQL("drop table if exists " + CONTROL_TABLE);
         db.execSQL("drop table if exists " + DIET_TABLE);
+        db.execSQL("drop table if exists" + GLUCOSE_TABLE);
         db.execSQL("drop table if exists" + USER_TABLE);
         db.execSQL("drop table if exists" + PRESCRIPTON_TABLE);
         db.execSQL("drop table if exists" + EXERCISE_TABLE);
+
         // Re-create tables
         onCreate(db);
     }
@@ -110,13 +121,17 @@ public class DatabaseManager extends SQLiteOpenHelper {
         fSqlInsert += " (" + FID + ", " + TYPEOFFOOD + ", " + AMOUNTOFFOOD + ", " + PROTEIN + ", " + CALORIES + ", " + FDATE + ", " + FTIME + ")";
         fSqlInsert += " values(null,'" + food.getTypeOfFood() + "'," + food.getAmountOfFood() + "," + food.getProtien() + "," + food.getCalories() + ",julianday('" + food.getDate() + "'),julianday('" + food.getTime() + "'))";
         db.execSQL(fSqlInsert);
-        //db.close();
+        db.close();
     }
 
     public void insertGlucose(GlucoseReadingObject glucose) {
         SQLiteDatabase db = this.getWritableDatabase();
         String sqlInsert = "insert into " + CONTROL_TABLE + "(" + CID + "," + CDATE + ") values( null, julianday('" + glucose.getGdate() + "'))";
         db.execSQL(sqlInsert);
+        String gSqlInsert = "insert into " + GLUCOSE_TABLE
+        + " (" + GID + ", " + GLUCOSE_LEVEL +", " + GLUCOSE_READING_TAKEN +   ", " + GDATE + ", " + GTIME + ")"
+         +" values(null,'" + glucose.getGlucose_level() + "'," + glucose.getReading_taken() + "," + ",julianday('" + glucose.getGdate() + "'),julianday('" + glucose.getGtime() + "'))";
+        db.execSQL(gSqlInsert);
         db.close();
     }
 
@@ -180,7 +195,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         db.close();
     }
 
-    public ArrayList<FoodConsumedObject> selectFood( ) {
+    public ArrayList<FoodConsumedObject> selectAllFoodDetails( ) {
         SQLiteDatabase db = this.getWritableDatabase();
         int fvalue =0 ;
         String date =" ";
@@ -204,5 +219,30 @@ public class DatabaseManager extends SQLiteOpenHelper {
         }
         db.close();
         return ArrayFood;
+    }
+    public ArrayList<GlucoseReadingObject> selectAllGlucoseDetails( ) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int gvalue =0 ;
+        String date =" ";
+        String time =" ";
+        String gSqlSelect = "select *  from " + GLUCOSE_TABLE + "";
+        Cursor cursor = db.rawQuery(gSqlSelect, null);
+        ArrayList<GlucoseReadingObject> ArrayGlucose = new ArrayList<GlucoseReadingObject>();
+
+        while (cursor.moveToNext()) {
+            GlucoseReadingObject gco = new GlucoseReadingObject(Integer.parseInt(cursor.getString(0)),Integer.parseInt(cursor.getString(1)), cursor.getString(2), cursor.getString(3),
+                    (cursor.getString(4)));
+            gvalue = gco.getGlucose_id();
+            String fSqlDate = "select date("+GDATE+"),time("+GTIME+") from " + GLUCOSE_TABLE + " where " +GID + "=" +gvalue;
+            Cursor cursor1 = db.rawQuery(fSqlDate,null);
+            if(cursor1.moveToNext())
+                date = cursor1.getString(0);
+            time = cursor1.getString(1);
+            gco.setGdate(date);
+            gco.setGtime(time);
+            ArrayGlucose.add(gco);
+        }
+        db.close();
+        return ArrayGlucose;
     }
 }
