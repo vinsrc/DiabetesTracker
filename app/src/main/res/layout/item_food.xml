@@ -29,7 +29,7 @@
                 android:id="@+id/rvs_date_fvalue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/TextStyle"/>
+                style="@style/TextStyle" />
         </LinearLayout>
 
         <LinearLayout
@@ -75,7 +75,7 @@
                 android:id="@+id/rvs_tof_fvalue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/TextStyle"  />
+                style="@style/TextStyle" />
         </LinearLayout>
 
         <LinearLayout
@@ -88,7 +88,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="left"
                 style="@style/TextStyle"
                 android:text="AOF:"/>
 
@@ -122,6 +121,7 @@
                 android:id="@+id/rvs_protien_fvalue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/TextStyle"
                  />
         </LinearLayout>
 
@@ -142,7 +142,8 @@
                 android:id="@+id/rvs_calories_fvalue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/TextStyle" />
+                style="@style/TextStyle"
+               />
         </LinearLayout>
 
     </LinearLayout>
