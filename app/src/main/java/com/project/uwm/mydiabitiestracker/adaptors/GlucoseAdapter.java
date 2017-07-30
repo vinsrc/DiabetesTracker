@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.project.uwm.mydiabitiestracker.ItemClickSupport;
 import com.project.uwm.mydiabitiestracker.R;
 import com.project.uwm.mydiabitiestracker.objects.FoodConsumedObject;
+import com.project.uwm.mydiabitiestracker.objects.GlucoseReadingObject;
 
 import java.util.List;
 
@@ -16,11 +17,11 @@ import java.util.List;
  * Created by Anitha on 7/26/2017.
  */
 
-public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
-    private List<FoodConsumedObject> mFoods;
+public class GlucoseAdapter extends RecyclerView.Adapter<GlucoseAdapter.ViewHolder> {
+    private List<GlucoseReadingObject> mFoods;
     private Context mContext;
 
-    public FoodAdapter(Context context, List<FoodConsumedObject> foods){
+    public GlucoseAdapter(Context context, List<GlucoseReadingObject> foods){
         mFoods = foods;
         mContext = context;
     }
@@ -28,38 +29,35 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
         return mContext;
     }
     @Override
-    public FoodAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public GlucoseAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
         // Inflate the custom layout
-        View foodView = inflater.inflate(R.layout.item_food, parent, false);
+        View glucoseView = inflater.inflate(R.layout.item_glucose, parent, false);
 
         // Return a new holder instance
-        ViewHolder viewHolder = new ViewHolder(foodView);
+        ViewHolder viewHolder = new ViewHolder(glucoseView);
         return viewHolder;
     }
 
 
 
     @Override
-    public void onBindViewHolder(FoodAdapter.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(GlucoseAdapter.ViewHolder viewHolder, int position) {
         // Get the data model based on position
-        FoodConsumedObject food = mFoods.get(position);
+        GlucoseReadingObject glucose = mFoods.get(position);
 
         // Set item views based on your views and data model
-        TextView dateTextView = viewHolder.dateTextView;
-        dateTextView.setText(food.getDate());
-        TextView timeTextView = viewHolder.timeTextView;
-        timeTextView.setText(food.getTime());
-        TextView tofTextView = viewHolder.tofTextView;
-        tofTextView.setText(food.getTypeOfFood());
-        TextView aofTextView = viewHolder.aofTextView;
-        aofTextView.setText(Integer.toString(food.getAmountOfFood()));
-        TextView proteinTextView = viewHolder.proteinTextView;
-        proteinTextView.setText(Integer.toString(food.getProtien()));
-        TextView caloriesTextView = viewHolder.caloriesTextView;
-        caloriesTextView.setText(Integer.toString(food.getCalories()));
+        TextView gdateTextView = viewHolder.gdateTextView;
+        gdateTextView.setText(glucose.getGdate());
+        TextView gtimeTextView = viewHolder.gtimeTextView;
+        gtimeTextView.setText(glucose.getGdate());
+        TextView glevel = viewHolder.glevel;
+        glevel.setText(Integer.toString(glucose.getGlucose_level()));
+        TextView greadingtaken = viewHolder.greadingtaken;
+        greadingtaken.setText(glucose.getReading_taken());
+
 
     }
 
@@ -73,12 +71,11 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
         // Your holder should contain a member variable
         // for any view that will be set as you render a row
-        public TextView dateTextView;
-        public TextView timeTextView;
-        public TextView tofTextView;
-        public TextView aofTextView;
-        public TextView proteinTextView;
-        public TextView caloriesTextView;
+        public TextView gdateTextView;
+        public TextView gtimeTextView;
+        public TextView glevel;
+        public TextView greadingtaken;
+    ;
 
         // We also create a constructor that accepts the entire item row
         // and does the view lookups to find each subview
@@ -86,12 +83,10 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
             // Stores the itemView in a public final member variable that can be used
             // to access the context from any ViewHolder instance.
             super(itemView);
-            dateTextView = (TextView) itemView.findViewById(R.id.rvs_date_fvalue);
-            timeTextView = (TextView) itemView.findViewById(R.id.rvs_time_fvalue);
-            tofTextView = (TextView) itemView.findViewById(R.id.rvs_tof_fvalue);
-            aofTextView = (TextView) itemView.findViewById(R.id.rvs_aof_fvalue);
-            proteinTextView = (TextView) itemView.findViewById(R.id.rvs_protien_fvalue);
-            caloriesTextView =  (TextView) itemView.findViewById(R.id.rvs_calories_fvalue);
+            gdateTextView = (TextView) itemView.findViewById(R.id.rvs_date_gvalue);
+            gtimeTextView = (TextView) itemView.findViewById(R.id.rvs_time_gvalue);
+            glevel = (TextView) itemView.findViewById(R.id.rvs_glevel);
+            greadingtaken = (TextView) itemView.findViewById(R.id.rvs_greadingTaken);
         }
 
 

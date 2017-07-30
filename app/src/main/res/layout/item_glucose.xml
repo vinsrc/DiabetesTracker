@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/food_rv"
+    android:id="@+id/glucose_rv"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -25,7 +25,7 @@
                 android:text="Date:"/>
 
             <TextView
-                android:id="@+id/rvs_date_fvalue"
+                android:id="@+id/rvs_date_gvalue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextStyle" />
@@ -45,7 +45,7 @@
                 android:text="Time:"/>
 
             <TextView
-                android:id="@+id/rvs_time_fvalue"
+                android:id="@+id/rvs_time_gvalue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextStyle" />
@@ -68,10 +68,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextStyle"
-                android:text="TOF:"/>
+                android:text="Glucose Level(mg/dL):"/>
 
             <TextView
-                android:id="@+id/rvs_tof_fvalue"
+                android:id="@+id/rvs_glevel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextStyle" />
@@ -88,64 +88,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextStyle"
-                android:text="AOF:"/>
+                android:text="Reading Taken:"/>
 
             <TextView
-                android:id="@+id/rvs_aof_fvalue"
+                android:id="@+id/rvs_greadingTaken"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextStyle" />
         </LinearLayout>
 
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:orientation="horizontal"
-            android:padding="4dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/TextStyle"
-                android:text="Protien:"/>
 
-            <TextView
-                android:id="@+id/rvs_protien_fvalue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/TextStyle"
-                 />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:orientation="horizontal"
-            android:padding="4dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/TextStyle"
-                android:text="Calories:"/>
-
-            <TextView
-                android:id="@+id/rvs_calories_fvalue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/TextStyle"
-               />
-        </LinearLayout>
-
-    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"

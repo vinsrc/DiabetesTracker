@@ -12,6 +12,7 @@ import com.project.uwm.mydiabitiestracker.objects.PrescriptionReadingObject;
 import com.project.uwm.mydiabitiestracker.objects.UserObject;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public class DatabaseManager extends SQLiteOpenHelper {
@@ -223,6 +224,82 @@ public class DatabaseManager extends SQLiteOpenHelper {
         db.close();
         return ArrayFood;
     }
+
+    public ArrayList<FoodConsumedObject> selectWeekFoodDetails( ) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int fvalue =0 ;
+        String date =" ";
+        String time =" ";
+        String fSqlSelect = "select *  from " + DIET_TABLE + "";
+        Cursor cursor = db.rawQuery(fSqlSelect, null);
+        ArrayList<FoodConsumedObject> ArrayFood = new ArrayList<FoodConsumedObject>();
+
+        while (cursor.moveToNext()) {
+            FoodConsumedObject fco = new FoodConsumedObject(Integer.parseInt(cursor.getString(0)), cursor.getString(1), Integer.parseInt(cursor.getString(2)), Integer.parseInt(cursor.getString(3)),
+                    Integer.parseInt(cursor.getString(4)), cursor.getString(5), cursor.getString(6));
+            fvalue = fco.getFood_id();
+            String fSqlDate = "select date("+FDATE+"),time("+FTIME+") from " + DIET_TABLE + " where " +FID + "=" +fvalue;
+            Cursor cursor1 = db.rawQuery(fSqlDate,null);
+            if(cursor1.moveToNext())
+                date = cursor1.getString(0);
+            time = cursor1.getString(1);
+            fco.setDate(date);
+            fco.setTime(time);
+            ArrayFood.add(fco);
+        }
+        db.close();
+        return ArrayFood;
+    }
+    public ArrayList<FoodConsumedObject> selectOneDayFoodDetails( ) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int fvalue =0 ;
+        String date =" ";
+        String time =" ";
+        String fSqlSelect = "select *  from " + DIET_TABLE + "";
+        Cursor cursor = db.rawQuery(fSqlSelect, null);
+        ArrayList<FoodConsumedObject> ArrayFood = new ArrayList<FoodConsumedObject>();
+
+        while (cursor.moveToNext()) {
+            FoodConsumedObject fco = new FoodConsumedObject(Integer.parseInt(cursor.getString(0)), cursor.getString(1), Integer.parseInt(cursor.getString(2)), Integer.parseInt(cursor.getString(3)),
+                    Integer.parseInt(cursor.getString(4)), cursor.getString(5), cursor.getString(6));
+            fvalue = fco.getFood_id();
+            String fSqlDate = "select date("+FDATE+"),time("+FTIME+") from " + DIET_TABLE + " where " +FID + "=" +fvalue;
+            Cursor cursor1 = db.rawQuery(fSqlDate,null);
+            if(cursor1.moveToNext())
+                date = cursor1.getString(0);
+            time = cursor1.getString(1);
+            fco.setDate(date);
+            fco.setTime(time);
+            //ArrayFood.add(fco);
+        }
+        db.close();
+        return ArrayFood;
+    }
+    public ArrayList<FoodConsumedObject> selectRageDateFoodDetails(Date fromdate, Date toDate) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int fvalue =0 ;
+        String date =" ";
+        String time =" ";
+        String fSqlSelect = "select *  from " + DIET_TABLE + "";
+        Cursor cursor = db.rawQuery(fSqlSelect, null);
+        ArrayList<FoodConsumedObject> ArrayFood = new ArrayList<FoodConsumedObject>();
+
+        while (cursor.moveToNext()) {
+            FoodConsumedObject fco = new FoodConsumedObject(Integer.parseInt(cursor.getString(0)), cursor.getString(1), Integer.parseInt(cursor.getString(2)), Integer.parseInt(cursor.getString(3)),
+                    Integer.parseInt(cursor.getString(4)), cursor.getString(5), cursor.getString(6));
+            fvalue = fco.getFood_id();
+            String fSqlDate = "select top 1 date("+FDATE+"),time("+FTIME+") from " + DIET_TABLE + " where " +FID + "=" +fvalue;
+            Cursor cursor1 = db.rawQuery(fSqlDate,null);
+            if(cursor1.moveToNext())
+                date = cursor1.getString(0);
+            time = cursor1.getString(1);
+            fco.setDate(date);
+            fco.setTime(time);
+            ArrayFood.add(fco);
+        }
+        db.close();
+        return ArrayFood;
+    }
     public ArrayList<GlucoseReadingObject> selectAllGlucoseDetails( ) {
         SQLiteDatabase db = this.getWritableDatabase();
         int gvalue =0 ;
@@ -233,7 +310,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         ArrayList<GlucoseReadingObject> ArrayGlucose = new ArrayList<GlucoseReadingObject>();
 
         while (cursor.moveToNext()) {
-            GlucoseReadingObject gco = new GlucoseReadingObject(Integer.parseInt(cursor.getString(0)),Integer.parseInt(cursor.getString(1)), cursor.getString(2), cursor.getString(3),
+            GlucoseReadingObject gco = new GlucoseReadingObject(Integer.parseInt(cursor.getString(0)),Integer.parseInt(cursor.getString(2)), cursor.getString(1), cursor.getString(3),
                     (cursor.getString(4)));
             gvalue = gco.getGlucose_id();
             String fSqlDate = "select date("+GDATE+"),time("+GTIME+") from " + GLUCOSE_TABLE + " where " +GID + "=" +gvalue;
