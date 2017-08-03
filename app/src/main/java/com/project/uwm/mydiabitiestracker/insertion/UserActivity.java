@@ -1,4 +1,4 @@
-package com.project.uwm.mydiabitiestracker.insertion;
+package com.project.uwm.mydiabitiestracker.Insertion;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,8 +12,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.project.uwm.mydiabitiestracker.DatabaseManager;
+import com.project.uwm.mydiabitiestracker.LoginActivity;
 import com.project.uwm.mydiabitiestracker.R;
-import com.project.uwm.mydiabitiestracker.objects.UserObject;
+import com.project.uwm.mydiabitiestracker.Objects.UserObject;
 
 /**
  * Created by RON on 7/17/2017.
@@ -71,7 +72,7 @@ public class UserActivity extends AppCompatActivity {
             String emailString = email.getText().toString();
 
 
-            UserObject uo = new UserObject(0,userNameString,passWordString,firstNameString,lastNameString,emailString);
+            UserObject uo = new UserObject(userNameString,passWordString,firstNameString,lastNameString,emailString);
 
             if (
                     userNameString.trim().length() == 0 || passWordString.trim().length() == 0
@@ -113,7 +114,7 @@ public class UserActivity extends AppCompatActivity {
             showMessage(userCreated, welcome);
             clearText();
             // Proceed to the Main Menu:
-            Intent intent = new Intent(this, UserActivity.class);
+            Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
             dbManager.close();
         }

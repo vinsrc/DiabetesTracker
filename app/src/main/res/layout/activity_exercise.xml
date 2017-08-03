@@ -26,7 +26,7 @@
         android:textColor="@color/maroon"
         android:textSize="@dimen/hidestringsize"
         android:text="@string/exercise_type"/>
-    <EditText
+    <AutoCompleteTextView
         android:id="@+id/exercise_type_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -107,27 +107,28 @@
         android:layout_alignLeft="@id/exercise_duration_value"
         android:layout_below="@+id/time_administered_value" />
 
+
     <Button
         android:id="@+id/exercise_add_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ADD"
         android:onClick="exerciseInsert"
-        android:layout_alignBaseline="@+id/exercise_back_button"
         android:layout_alignBottom="@+id/exercise_back_button"
-        android:layout_marginLeft="80dp"
-        />
+        android:layout_alignRight="@+id/exercise_type"
+        android:layout_alignEnd="@+id/exercise_type"
+        android:layout_alignTop="@+id/exercise_back_button" />
     <Button
         android:id="@+id/exercise_back_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="55dp"
         android:text="Back"
         android:onClick="goBack"
         android:layout_below="@+id/exercise_date_value"
-        android:layout_toRightOf="@+id/exercise_start_time"
-        android:layout_toEndOf="@+id/exercise_add_button"
-        android:layout_marginLeft="34dp"
-        android:layout_marginStart="34dp" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="68dp"
+        android:layout_marginEnd="68dp" />
 
 </RelativeLayout>

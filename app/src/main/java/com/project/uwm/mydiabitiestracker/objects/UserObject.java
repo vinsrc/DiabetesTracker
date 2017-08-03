@@ -1,18 +1,18 @@
-package com.project.uwm.mydiabitiestracker.objects;
+package com.project.uwm.mydiabitiestracker.Objects;
 
 /**
  * Created by Anitha on 7/22/2017.
  */
 
 public class UserObject {
-    private static int uid;
+
     private static String userName;
     private static String password;
     private static String firstName;
     private static String lastName;
     private static String email;
 
-    public UserObject(int uid, String t_userName, String t_password, String t_firstName, String t_lastName, String t_email){
+    public UserObject( String t_userName, String t_password, String t_firstName, String t_lastName, String t_email){
         setUserName(t_userName);
         setPassword(t_password);
         setFirstName(t_firstName);

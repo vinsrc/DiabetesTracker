@@ -1,38 +1,59 @@
-package com.project.uwm.mydiabitiestracker.insertion;
+package com.project.uwm.mydiabitiestracker.Insertion;
 
 
 /**
  * Created by Anitha on 7/14/2017.
  */
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.project.uwm.mydiabitiestracker.DatabaseManager;
+import com.project.uwm.mydiabitiestracker.Objects.UserPreference;
 import com.project.uwm.mydiabitiestracker.R;
-import com.project.uwm.mydiabitiestracker.objects.FoodConsumedObject;
+import com.project.uwm.mydiabitiestracker.Objects.FoodConsumedObject;
+import com.project.uwm.mydiabitiestracker.VeiwRegimen;
 
 import java.util.Date;
 
 public class FoodInsertActivity extends AppCompatActivity {
     private DatabaseManager dbManager;
+    AutoCompleteTextView text;
+    private ArrayAdapter<String> adapter;
+    String userName;
+    String[] food
+            ={"banana","apple","french fries","corn","eclair","jello", "avocado", "egg",
+            "yogurt", "steak", "peanut butter and jelly sandwich", "arugula", "celery", "starfruit", "lemon"};
     public static final String FI = "FoodInsertActivity";
+    UserPreference pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.food_insert);
+        setContentView(R.layout.activity_food);
+        userName = pref.getUserName();
+        dbManager = new DatabaseManager(this);
+
+        adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,food);
+        text = (AutoCompleteTextView) findViewById(R.id.foodtypevalue);
+        // set adapter for the auto complete field
+        text.setAdapter(adapter);
+        // specify the minimum type of characters before drop-down list is shown
+        text.setThreshold(1);
         dbManager = new DatabaseManager(this);
         Date date = new Date();
         EditText datefood = (EditText) findViewById(R.id.date_value_f);
         android.text.format.DateFormat df = new android.text.format.DateFormat();
         datefood.setText(df.format("yyyy-MM-dd",date));
         EditText timefood = (EditText) findViewById(R.id.time_value_f);
-        timefood.setText(df.format("hh:mm:ss",date));
+        timefood.setText(df.format("hh:mm",date));
     }
     protected void onStart() {
         super.onStart();
@@ -77,10 +98,8 @@ public class FoodInsertActivity extends AppCompatActivity {
         int amountOfFood = Integer.parseInt(foodtypeamount);
         int protein = Integer.parseInt(proteinString);
         int calories = Integer.parseInt(caloriesString);
-        //String date = Integer.parseInt(dateString);
-        //String time = Integer.parseInt(timeString);
         try{
-            FoodConsumedObject fco = new FoodConsumedObject( 0,foodtype, amountOfFood, protein, calories, dateString,timeString );
+            FoodConsumedObject fco = new FoodConsumedObject( 0,userName,foodtype, amountOfFood, protein, calories, dateString,timeString );
 
             dbManager.insertFood(fco);
             Toast.makeText( this, "Details added", Toast.LENGTH_SHORT ).show( );
@@ -100,5 +119,10 @@ public class FoodInsertActivity extends AppCompatActivity {
     }*/
     public void goBack(View view){
         this.finish();
+    }
+
+    public void goBackFromFood(View view){
+        Intent intent = new Intent(this,VeiwRegimen.class);
+        startActivity(intent);
     }
 }

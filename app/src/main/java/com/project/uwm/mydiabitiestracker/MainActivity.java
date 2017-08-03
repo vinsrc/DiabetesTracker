@@ -76,7 +76,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
 
 
-        } else if (id == R.id.overview) {
+        } else if (id == R.id.view_graphs) {
+            Intent intent = new Intent(this,ViewGraphs.class);
+            startActivity(intent);
 
         } else if (id == R.id.delete) {
 

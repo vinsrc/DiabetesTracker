@@ -98,11 +98,17 @@
         </LinearLayout>
 
     </LinearLayout>
+
+
+
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal">
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -110,18 +116,18 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:orientation="horizontal"
             android:padding="4dp">
+
             <TextView
+                style="@style/TextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/TextStyle"
-                android:text="Protien:"/>
+                android:text="Protein:" />
 
             <TextView
                 android:id="@+id/rvs_protien_fvalue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 style="@style/TextStyle"
-                 />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
@@ -131,21 +137,38 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:orientation="horizontal"
             android:padding="4dp">
+
             <TextView
+                style="@style/TextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/TextStyle"
-                android:text="Calories:"/>
+                android:text="Calories:" />
 
             <TextView
                 android:id="@+id/rvs_calories_fvalue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 style="@style/TextStyle"
-               />
-        </LinearLayout>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
-    </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".2"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:orientation="horizontal"
+            android:padding="4dp"
+            android:weightSum="1">
+
+            <ImageButton
+                android:id="@+id/rveditFoodButton"
+                android:layout_width="wrap_content"
+                android:layout_height="13dp"
+                app:srcCompat="@drawable/ic_edit_black_24dp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"

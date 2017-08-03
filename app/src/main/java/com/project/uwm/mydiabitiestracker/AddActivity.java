@@ -6,10 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
-import com.project.uwm.mydiabitiestracker.insertion.ExerciseActivity;
-import com.project.uwm.mydiabitiestracker.insertion.FoodInsertActivity;
-import com.project.uwm.mydiabitiestracker.insertion.GlucoseInsertActivity;
-import com.project.uwm.mydiabitiestracker.insertion.PrescriptionActivity;
+import com.project.uwm.mydiabitiestracker.Insertion.ExerciseActivity;
+import com.project.uwm.mydiabitiestracker.Insertion.FoodInsertActivity;
+import com.project.uwm.mydiabitiestracker.Insertion.GlucoseInsertActivity;
+import com.project.uwm.mydiabitiestracker.Insertion.PrescriptionActivity;
+import com.project.uwm.mydiabitiestracker.Insertion.RegimenActivity;
 
 /**
  * Created by Anitha on 7/23/2017.
@@ -62,5 +63,19 @@ import com.project.uwm.mydiabitiestracker.insertion.PrescriptionActivity;
         Intent intent = new Intent(this, PrescriptionActivity.class);
         startActivity(intent);
     }
+    public void regimenInsert(View v){
+       Intent intent = new Intent(this, RegimenActivity.class);
+        startActivity(intent);
+
+    }
+    public void ViewRegimen(View v){
+        Intent intent = new Intent(this, VeiwRegimen.class);
+        startActivity(intent);
+    }
+    public void onClicked(View v){
+        this.finish();
+    }
+
+
 
 }

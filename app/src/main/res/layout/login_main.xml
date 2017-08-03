@@ -19,9 +19,7 @@
         app:srcCompat="@drawable/app_logo_rev2" />
     <TextView
         android:id="@+id/label_user"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/maroon"
+        style="@style/TextStyleCommon"
         android:textSize="@dimen/stringsize"
         android:text="@string/user"
         android:layout_below="@+id/imageView" />
@@ -41,13 +39,9 @@
         />
     <TextView
         android:id="@+id/password_user"
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/maroon"
+        style="@style/TextStyleCommon"
         android:textSize="@dimen/stringsize"
         android:text="@string/password"
-
         android:layout_below="@+id/hint_user"
         android:layout_alignLeft="@+id/hint_user"
         />
@@ -69,11 +63,9 @@
 
     <Button
         android:id="@+id/button_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TextStyleCommon"
         android:text="@string/buttonlogin"
         android:textSize="@dimen/hidestringsize"
-        android:textColor="@color/maroon"
         android:layout_gravity="center"
         android:layout_below="@+id/hint_password"
         android:layout_centerHorizontal="true"

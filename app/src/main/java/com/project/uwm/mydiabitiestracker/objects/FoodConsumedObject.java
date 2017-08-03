@@ -1,4 +1,4 @@
-package com.project.uwm.mydiabitiestracker.objects;
+package com.project.uwm.mydiabitiestracker.Objects;
 
 /**
  * Created by Anitha on 7/13/2017.
@@ -6,14 +6,16 @@ package com.project.uwm.mydiabitiestracker.objects;
 
 public class FoodConsumedObject {
     private int food_id;
+    private String username;
     private String typeOfFood;
     private int amountOfFood;
     private int protien;
     private int calories;
     private String fdate;
     private String ftime;
-    public FoodConsumedObject(int t_foo_id, String t_typeOfFood, int t_amountOfFood, int t_protien, int t_calories, String t_date, String t_time){
+    public FoodConsumedObject(int t_foo_id, String username, String t_typeOfFood, int t_amountOfFood, int t_protien, int t_calories, String t_date, String t_time){
         setTypeOfFood(t_typeOfFood);
+        setUsername(username);
         setAmountOfFood(t_amountOfFood);
         setProtien(t_protien);
         setCalories(t_calories);
@@ -22,6 +24,13 @@ public class FoodConsumedObject {
         setFood_id(t_foo_id);
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public int getFood_id() {
         return food_id;

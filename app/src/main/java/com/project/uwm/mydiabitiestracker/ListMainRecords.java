@@ -1,20 +1,26 @@
 package com.project.uwm.mydiabitiestracker;
 
+import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.CompoundButton;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.project.uwm.mydiabitiestracker.recordfragment.ExerciseRecordsFragment;
-import com.project.uwm.mydiabitiestracker.recordfragment.FoodRecordsFragment;
-import com.project.uwm.mydiabitiestracker.recordfragment.GlucoseRecordsFragment;
-import com.project.uwm.mydiabitiestracker.recordfragment.PrescriptionRecordsFragment;
+import com.project.uwm.mydiabitiestracker.RecordFragment.ExerciseRecordsFragment;
+import com.project.uwm.mydiabitiestracker.RecordFragment.FoodRecordsFragment;
+import com.project.uwm.mydiabitiestracker.RecordFragment.GlucoseRecordsFragment;
+import com.project.uwm.mydiabitiestracker.RecordFragment.PrescriptionRecordsFragment;
+
+import java.util.Calendar;
+import java.util.TimeZone;
 
 /**
  * Created by Anitha on 7/29/2017.
@@ -22,17 +28,19 @@ import com.project.uwm.mydiabitiestracker.recordfragment.PrescriptionRecordsFrag
 
 public class ListMainRecords extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     Spinner menuSpinner;
+
+
  /*   private static Switch selectorSwitch;*/
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState)  {
+    protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_viewrecords);
-       /* selectorSwitch = (Switch) findViewById(R.id.switchSelectAllRecords);
-        selectorSwitch.setChecked(false);*/
+
+
         this.menuSpinner = (Spinner) findViewById(R.id.selectRecords);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.menu_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         menuSpinner.setAdapter(adapter);
         menuSpinner.setOnItemSelectedListener(this);
     }
@@ -97,4 +105,6 @@ public class ListMainRecords extends AppCompatActivity implements AdapterView.On
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
+
+
 }

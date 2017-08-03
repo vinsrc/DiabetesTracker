@@ -6,7 +6,6 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
@@ -14,6 +13,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -22,16 +22,29 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddActivity"></activity>
-        <activity android:name=".insertion.FoodInsertActivity"></activity>
-        <activity android:name=".insertion.GlucoseInsertActivity"></activity>
-        <activity android:name=".insertion.ExerciseActivity"></activity>
-        <activity android:name=".insertion.PrescriptionActivity"></activity>
-        <activity android:name=".insertion.UserActivity"></activity>
-        <activity android:name=".ListMainRecords"></activity>
+        <activity android:name=".AddActivity" />
+        <activity android:name=".Insertion.FoodInsertActivity" />
+        <activity android:name=".Insertion.GlucoseInsertActivity" />
+        <activity android:name=".Insertion.ExerciseActivity" />
+        <activity android:name=".Insertion.PrescriptionActivity" />
+        <activity android:name=".Insertion.UserActivity" />
+        <activity android:name=".ListMainRecords" />
+        <activity android:name=".EditRecords.UpdateFoodRecords" />
+        <activity android:name=".EditRecords.UpdateGlucoseRecords" />
+        <activity android:name=".ViewGraphs" />
+        <activity android:name=".EditRecords.UpdatePrescriptionRecords" />
+        <activity android:name=".EditRecords.UpdateExerciseRecords" />
+        <activity android:name=".Insertion.RegimenActivity" />
+        <activity android:name=".VeiwRegimen" />
+        <activity
+            android:name=".RemainderActivity"
+            android:label="@string/title_activity_remainder"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".FoodInsert"></activity>
     </application>
 
 </manifest>

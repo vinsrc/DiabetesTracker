@@ -1,4 +1,4 @@
-package com.project.uwm.mydiabitiestracker.recordfragment;
+package com.project.uwm.mydiabitiestracker.RecordFragment;
 
 import android.content.Context;
 import android.net.Uri;
@@ -9,17 +9,20 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.Switch;
 
+import com.project.uwm.mydiabitiestracker.Adapters.GlucoseAdapter;
 import com.project.uwm.mydiabitiestracker.DatabaseManager;
+import com.project.uwm.mydiabitiestracker.Objects.GlucoseReadingObject;
+import com.project.uwm.mydiabitiestracker.Objects.UserPreference;
 import com.project.uwm.mydiabitiestracker.R;
-import com.project.uwm.mydiabitiestracker.adaptors.GlucoseAdapter;
-import com.project.uwm.mydiabitiestracker.objects.GlucoseReadingObject;
 
 import java.util.ArrayList;
 
-
-public class GlucoseRecordsFragment extends Fragment {
+public class GlucoseRecordsFragment extends Fragment /*implements View.OnClickListener,DatePickerDialog.OnDateSetListener*/  {
     //private BottomSheetDialog bottomSheetDialog;
     private OnFragmentInteractionListener gmListener;
     ArrayList<GlucoseReadingObject> glucoseList = new ArrayList<>();
@@ -28,6 +31,14 @@ public class GlucoseRecordsFragment extends Fragment {
     private RecyclerView.Adapter gAdaptor;
     private RecyclerView.LayoutManager gLayoutManager;
     private Switch checkSwitch;
+    private CheckBox weekChkBox;
+    private CheckBox dayChkBox;
+    String userName;
+    UserPreference pref;
+    EditText editTextFromDate,editTextToDate;
+    private int day;
+    private int month;
+    private int year;
 
     private OnFragmentInteractionListener mListener;
 
@@ -43,58 +54,88 @@ public class GlucoseRecordsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+      /*  editTextFromDate =(EditText) getActivity().findViewById(R.id.editTextFromDate);
+        this.editTextFromDate.setOnClickListener(this);
+        editTextToDate =(EditText) getActivity().findViewById(R.id.editTextToDate);
+        this.editTextToDate.setOnClickListener(this);*/
         View rootView = inflater.inflate(R.layout.fragment_glucose_records, container, false);
-        checkSwitch =(Switch) rootView.findViewById(R.id.gswitchSelectAllRecords) ;
+        checkSwitch =(Switch) rootView.findViewById(R.id.switchSelectAllRecords) ;
         rvGlucose = (RecyclerView) rootView.findViewById(R.id.recycleViewGlucose);
         rvGlucose.setHasFixedSize(true);
-      /*  final ItemClickSupport itemClick = ItemClickSupport.addTo(rvFood);
-        itemClick.setOnItemClickListener(this);*/
+        checkSwitch =(Switch) getActivity().findViewById(R.id.switchSelectAllRecords);
+        weekChkBox =(CheckBox) getActivity().findViewById(R.id.cbWeek);
+        dayChkBox =(CheckBox) getActivity().findViewById(R.id.cbDay);
+        userName = pref.getUserName();
+
         gLayoutManager = new LinearLayoutManager(getActivity());
         Context context =getActivity();
         dbManager = new DatabaseManager(context);
         rvGlucose.setLayoutManager(gLayoutManager);
-
-        if(checkSwitch.isChecked()) {
-            glucoseList = dbManager.selectAllGlucoseDetails();
-            gAdaptor = new GlucoseAdapter(context, glucoseList);
-            rvGlucose.setAdapter(gAdaptor);
-            return rootView;
-        }
-        glucoseList = dbManager.selectAllGlucoseDetails();
-        gAdaptor = new GlucoseAdapter(context, glucoseList);
-        rvGlucose.setAdapter(gAdaptor);
+        checkSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+            public void onCheckedChanged(CompoundButton button,boolean isChecked){
+                if(isChecked){
+                    glucoseList= dbManager.selectAllGlucoseDetails(userName);
+                    gAdaptor= new GlucoseAdapter(getActivity(), glucoseList);
+                    rvGlucose.setAdapter(gAdaptor);
+                }else{
+                    weekChkBox.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if(view.isEnabled()) {
+                                dayChkBox.setChecked(false);
+                                glucoseList= dbManager.selectWeekGlucoseDetails(userName);
+                                gAdaptor= new GlucoseAdapter(getActivity(), glucoseList);
+                                rvGlucose.setAdapter(gAdaptor);
+                            }
+                        }
+                    });
+                    dayChkBox.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if(view.isEnabled()) {
+                                weekChkBox.setChecked(false);
+                                glucoseList= dbManager.selectOneGlucoseDetails(userName);
+                                gAdaptor= new GlucoseAdapter(getActivity(), glucoseList);
+                                rvGlucose.setAdapter(gAdaptor);
+                            }
+                        }
+                    });
+                }
+            }
+        });
         return rootView;
     }
-
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
-        } /*else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }*/
+        }
     }
-
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
     }
+/*
+    public void onDateSet(DatePicker datePicker, int yr, int mnth, int monthday) {
+        year =yr;
+        month = mnth;
+        day = monthday;
+        updateDisplay();
+    }
+    private void updateDisplay(){
+        editTextFromDate.setText(new StringBuilder().append(year).append("-").append(month).append("-").append(day));
+        editTextToDate.setText(new StringBuilder().append(year).append("-").append(month).append("-").append(day));
+    }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
+    @Override
+    public void onClick(View view) {
+        Calendar calender = Calendar.getInstance(TimeZone.getDefault());
+        DatePickerDialog dialog = new DatePickerDialog(getActivity(),this,calender.get(calender.YEAR),calender.get(Calendar.MONTH),calender.get(Calendar.DAY_OF_MONTH));
+        dialog.show();
+    }*/
+
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);

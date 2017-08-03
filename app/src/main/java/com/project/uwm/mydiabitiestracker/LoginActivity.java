@@ -9,8 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.project.uwm.mydiabitiestracker.insertion.UserActivity;
-import com.project.uwm.mydiabitiestracker.objects.UserPreference;
+import com.project.uwm.mydiabitiestracker.Insertion.UserActivity;
+import com.project.uwm.mydiabitiestracker.Objects.UserPreference;
 
 /**
  * Created by Anitha on 7/9/2017.
@@ -19,7 +19,6 @@ import com.project.uwm.mydiabitiestracker.objects.UserPreference;
 public class LoginActivity extends AppCompatActivity {
     Button login_button;
     EditText userName, passWord;
-
     private static final String USER_KEY = "userKey";
     private static final String PASSWORD_KEY ="passwordKey";
     private static final String USER_DETAILS ="userDetails";

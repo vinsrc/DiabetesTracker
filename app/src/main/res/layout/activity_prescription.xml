@@ -19,67 +19,50 @@
 
     <TextView
         android:id="@+id/prescription_type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TextStyle1"
         android:layout_marginTop="80dp"
         android:paddingTop="25dp"
         android:paddingBottom="0dp"
-        android:textColor="@color/maroon"
-        android:textSize="@dimen/hidestringsize"
         android:text="@string/prescription_type"/>
-    <EditText
+    <AutoCompleteTextView
         android:focusable="true"
         android:id="@+id/prescription_type_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/EditText"
         android:inputType="textPersonName"
         android:layout_alignParentTop="false"
         android:layout_toRightOf="@+id/prescription_type"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:layout_alignBottom="@+id/prescription_type"
         android:layout_alignLeft="@+id/dosage_value"/>
     <TextView
         android:id="@+id/dosage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TextStyle1"
         android:layout_marginTop="@dimen/ahm"
         android:layout_below="@+id/prescription_type"
         android:layout_alignLeft="@+id/prescription_type"
         android:paddingTop="2dp"
         android:paddingBottom="2dp"
-        android:textColor="@color/maroon"
-        android:textSize="@dimen/hidestringsize"
+
         android:text="@string/prescription_dosage"/>
     <EditText
         android:id="@+id/dosage_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/EditText"
         android:inputType="number"
         android:layout_below="@+id/prescription_type_value"
         android:layout_toRightOf="@+id/dosage"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:layout_alignBottom="@id/dosage"/>
     <TextView
         android:id="@+id/time_administered"
         android:paddingTop="3dp"
         android:paddingBottom="3dp"
         android:layout_marginTop="@dimen/ahm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TextStyle1"
         android:layout_alignLeft="@+id/dosage"
         android:layout_below="@+id/dosage"
-        android:textColor="@color/maroon"
-        android:textSize="@dimen/hidestringsize"
         android:text="@string/prescription_time" />
     <EditText
         android:id="@+id/time_administered_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/EditText"
         android:layout_toRightOf="@+id/time_administered"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:layout_alignBottom="@id/time_administered"
         android:layout_alignLeft="@id/dosage_value"
         android:layout_below="@+id/dosage_value"
@@ -89,46 +72,43 @@
         android:paddingTop="2dp"
         android:paddingBottom="2dp"
         android:layout_marginTop="@dimen/ahm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TextStyle1"
         android:layout_alignLeft="@+id/time_administered"
         android:layout_below="@+id/time_administered"
-        android:textColor="@color/maroon"
-        android:textSize="@dimen/hidestringsize"
         android:text="@string/prescription_date"/>
     <EditText
         android:id="@+id/date_administered_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/EditText"
         android:inputType="textPersonName"
         android:layout_toRightOf="@+id/date_administered"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:layout_alignBottom="@id/date_administered"
         android:layout_alignLeft="@id/dosage_value"
         android:layout_below="@+id/time_administered_value" />
-
     <Button
         android:id="@+id/prescription_add_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ADD"
         android:onClick="prescriptionInsert"
-        android:layout_alignBaseline="@+id/back_button"
-        android:layout_alignBottom="@+id/back_button"
-        android:layout_marginLeft="80dp"
-        />
+        android:layout_marginLeft="29dp"
+        android:layout_below="@+id/date_administered_value"
+        android:layout_toRightOf="@+id/time_administered"
+        android:layout_toEndOf="@+id/time_administered"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="64dp" />
     <Button
         android:id="@+id/back_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
         android:text="Back"
         android:onClick="goBack"
-        android:layout_below="@+id/date_administered_value"
+        android:layout_alignBaseline="@+id/prescription_add_button"
+        android:layout_alignBottom="@+id/prescription_add_button"
         android:layout_toRightOf="@+id/prescription_add_button"
         android:layout_toEndOf="@+id/prescription_add_button"
-        android:layout_marginLeft="34dp"
-        android:layout_marginStart="34dp" />
+        android:layout_marginLeft="62dp"
+        android:layout_marginStart="62dp" />
+
+
 
 </RelativeLayout>

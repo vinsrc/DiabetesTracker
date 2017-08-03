@@ -10,6 +10,7 @@
     android:layout_alignParentBottom="true"
     android:orientation="vertical">
 
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -22,7 +23,6 @@
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:gravity="center"
-        android:onClick="onPressureFabClicked"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -82,7 +82,7 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:onClick="onNotesClicked"
+            android:onClick="regimenInsert"
             android:orientation="vertical"
             android:padding="16dp">
 
@@ -90,7 +90,7 @@
                 android:layout_width="46dp"
                 android:layout_height="46dp"
                 android:layout_gravity="center"
-                android:src="@drawable/notes" />
+                android:src="@drawable/regimen" />
 
 
             <!--fontPath="fonts/lato-bold.ttf"-->
@@ -100,7 +100,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:paddingTop="8dp"
-                android:text="@string/add_notes"
+                android:text="@string/add_regimen"
                 android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>
@@ -176,9 +176,8 @@
                 android:layout_height="46dp"
                 android:layout_gravity="center"
                 android:src="@drawable/prescription" />
-
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/textViewmed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -186,6 +185,18 @@
                 android:paddingTop="8dp"
                 android:text="@string/add_medicine"
                 android:textSize="12sp" />
+
+
         </LinearLayout>
     </LinearLayout>
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="51dp"
+        android:onClick="ViewRegimen"
+        android:text="Click for regimen!!!"
+        android:textSize="30dp"
+        android:textColor="@color/colorPrimary"
+        android:gravity="center"/>
+
 </LinearLayout>
