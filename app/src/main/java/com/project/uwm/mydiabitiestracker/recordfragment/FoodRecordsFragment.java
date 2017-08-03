@@ -25,6 +25,7 @@ import com.project.uwm.mydiabitiestracker.adaptors.FoodAdapter;
 import com.project.uwm.mydiabitiestracker.objects.FoodConsumedObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class FoodRecordsFragment extends Fragment { //implements ItemClickSupport.OnItemClickListener {
@@ -56,8 +57,7 @@ public class FoodRecordsFragment extends Fragment { //implements ItemClickSuppor
         checkSwitch =(Switch) rootView.findViewById(R.id.switchSelectAllRecords) ;
         rvFood = (RecyclerView) rootView.findViewById(R.id.rvFoods);
         rvFood.setHasFixedSize(true);
-      /*  final ItemClickSupport itemClick = ItemClickSupport.addTo(rvFood);
-        itemClick.setOnItemClickListener(this);*/
+
         fLayoutManager = new LinearLayoutManager(getActivity());
         Context context =getActivity();
         dbManager = new DatabaseManager(context);
@@ -79,6 +79,7 @@ public class FoodRecordsFragment extends Fragment { //implements ItemClickSuppor
      private void showUpdateDialog(final View itemView){
 
      }
+
 
     @Override
     public void onAttach(Context context) {

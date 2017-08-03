@@ -24,9 +24,11 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
         mFoods = foods;
         mContext = context;
     }
+
     private Context getContext(){
         return mContext;
     }
+
     @Override
     public FoodAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
@@ -39,8 +41,6 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
         ViewHolder viewHolder = new ViewHolder(foodView);
         return viewHolder;
     }
-
-
 
     @Override
     public void onBindViewHolder(FoodAdapter.ViewHolder viewHolder, int position) {
